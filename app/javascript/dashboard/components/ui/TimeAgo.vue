@@ -7,7 +7,7 @@
     }"
     class="text-xxs text-slate-500 dark:text-slate-500 leading-4 ml-auto hover:text-slate-900 dark:hover:text-slate-100"
   >
-    <span>{{ `${createdAtTime} • ${lastActivityTime}` }}</span>
+    <span>{{ `${lastActivityTimeAbsolute}` }}</span>
   </div>
 </template>
 
@@ -45,6 +45,9 @@ export default {
   computed: {
     lastActivityTime() {
       return this.shortTimestamp(this.lastActivityAtTimeAgo);
+    },
+    lastActivityTimeAbsolute() {
+      return this.dateFormat(this.lastActivityTimestamp, 'hh:mm a dd/MM/yy');
     },
     createdAtTime() {
       return this.shortTimestamp(this.createdAtTimeAgo);
